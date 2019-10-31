@@ -9,9 +9,9 @@ The top level directory structure groups source code and input files as follow:
 
 | File/directory       | Purpose |
 | --------------       | ------- |
-| ```clean.sh```       | A copy of the Gnu lesser general public license, version 3. |
-| ```compile.sh```     | This file with basic pointers to more information. |
-| ```makefile.nuopc``` | Contains the source code for MOM6 that is always compiled. |
+| ```clean.sh```       | A script to clean up build and exe files. |
+| ```compile.sh```     | A compilation script to build MOM6 and cap using mkmf. |
+| ```makefile.nuopc``` | Makefile for MOM6 NUOPC cap. |
 | ```src/mkmf```       | Submodule to https://github.com/NOAA-EMC/mkmf |
 | ```src/MOM6```       | Submodule to https://github.com/NOAA-EMC/MOM6 |   
 
@@ -29,7 +29,3 @@ endorsement, recommendation or favoring by the Department of Commerce. The
 Department of Commerce seal and logo, or the seal and logo of a DOC bureau,
 shall not be used in any manner to imply endorsement of any commercial product
 or activity by DOC or the United States Government.
-
-
-
-
