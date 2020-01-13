@@ -7,7 +7,7 @@
 echo "Cleaning MOM6" 
 
 rm -rf build exec MOM6_INSTALL 
-find . -name '*.o' -o -name '*.mod' -o -name '*.a' | xargs rm -f
+find . -type f -name '*.o' -o -type f -name '*.mod' -o -type f -name '*.a' | xargs rm -f
 rm -f mom6.mk.install
 cd ..
 
