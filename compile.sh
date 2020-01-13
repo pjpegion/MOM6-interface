@@ -61,9 +61,16 @@ if [[ ${compile_MOM6_LIB} == 1 ]] ; then
     echo "generating makefile ..."
     ../../../../src/mkmf/bin/mkmf -t ../../../../src/mkmf/templates/${COMPILE_OPTION} -p lib_ocean.a -o "-I${FMS_DIR}" path_names
     
+    #to build debug mode
+    #REPRO=
+    #DEBUG=1
+    #otherwise
+    REPRO=1
+    DEBUG=
+
 
     echo "compiling MOM6 library..."
-    if ( ! make NETCDF=4 REPRO=1 lib_ocean.a  ) ; then
+    if ( ! make NETCDF=4 REPRO=${REPRO} DEBUG=${DEBUG} lib_ocean.a  ) ; then
         sadness "compiling MOM6 failed"
     fi
     echo "compiling MOM6 library successful"
