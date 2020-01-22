@@ -42,6 +42,18 @@ BASEDIR=`pwd`
 MACHINE_ID=${platform}  
 COMPILE_OPTION=${MACHINE_ID}-intel.mk
 
+# Build in debug mode. If DEBUG=Y, enable DEBUG compilation.
+# Otherwise, default to REPRO compilation. This flag is
+# set in ${ROOTDIR}/coupledFV3_MOM6_CICE_debug.appBuilder file.
+DEBUG=${DEBUG:-}
+REPRO=${REPRO:-}
+if [[ ${DEBUG} == "Y" ]] ; then
+  DEBUG=1
+else
+  REPRO=1
+fi
+echo "MOM6 compile.sh ... DEBUG=${DEBUG}, REPRO=${REPRO}"
+
 compile_MOM6_LIB=1
 compile_ocean_only=0
 compile_MOM6_SIS2=0
@@ -61,9 +73,8 @@ if [[ ${compile_MOM6_LIB} == 1 ]] ; then
     echo "generating makefile ..."
     ../../../../src/mkmf/bin/mkmf -t ../../../../src/mkmf/templates/${COMPILE_OPTION} -p lib_ocean.a -o "-I${FMS_DIR}" path_names
     
-
     echo "compiling MOM6 library..."
-    if ( ! make NETCDF=4 REPRO=1 lib_ocean.a  ) ; then
+    if ( ! make NETCDF=4 REPRO=${REPRO} DEBUG=${DEBUG} lib_ocean.a  ) ; then
         sadness "compiling MOM6 failed"
     fi
     echo "compiling MOM6 library successful"
