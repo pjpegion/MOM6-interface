@@ -1,0 +1,9 @@
+**/*.o
+*.o
+**/*.mod
+*.mod
+*.a
+build
+exec
+MOM6_INSTALL
+
